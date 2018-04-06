@@ -33,7 +33,7 @@ http://code.google.com/p/pyh
 - 修改并添加了一些tag
 
 =======================================
-# 生成列表示例：
+### 生成列表示例：
 `python examples/create_table_by_func.py 2 > a.html`
 
 如图：
