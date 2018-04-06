@@ -1,5 +1,6 @@
 #!/usr/bin/python
-#coding=utf-8
+# coding=utf-8
+# 用函数方式创建table
 
 import sys
 reload(sys) 
