@@ -1,6 +1,12 @@
 #!/usr/bin/python
-# coding=utf-8
-# 用函数方式创建table
+#coding=utf-8
+# 基于列表和函数生成table
+# 扩展：
+# 1. 可将需要展示的数据写成列表(由于填充的每一行的值是有序的，因此使用列表)，用函数生成table.html；
+# 本文列表示例：[['a', {'name':'', 'width':''}], ['b', {'name':'', 'width':''}], ['c', {'name':'', 'width':''}]]
+# 2. 可根据数据值增加标签属性，例如大于99的数值变成背景色为红色
+# 执行方法 python rtable_test.py 2
+# 注：后面的执行参数2只是一个参数示例，如无需求则可以去除sys.argv[1]这个变量。
 
 import sys
 reload(sys) 
@@ -10,7 +16,7 @@ from pyh import *
 
 
 def ini_table(num):
-    #table
+    #初始化table的标题
     info = 'RDS监控 共%s个' % num
     page = PyH('RDS')
     #page.addCSS('myStylesheet1.css', 'myStylesheet2.css')
@@ -19,7 +25,7 @@ def ini_table(num):
     page << style('td {text-align:center}')
     mytab = page << table(width="95%", rules="all", cellpadding="2", cellspacing="1", align="center")
     tr1 = mytab << tr()
-    tr1 << th('序号', width="50px", nowrap='nowrap') + th('实例ID',width="150px", nowrap='nowrap') + th('实例名称', width="150px", nowrap='nowrap') + th('CPU', width="50px", nowrap='nowrap') + th('QPS', width="50px", nowrap='nowrap') + th('IOPS', width="50px", nowrap='nowrap') + th('连接数', width="50px", nowrap='nowrap') + th('磁盘使用率', width="50px", nowrap='nowrap') + th('主备延迟', width="50px", nowrap='nowrap') + th('活跃线程', width="50px", nowrap='nowrap') + th('流量(KB)', width="50px", nowrap='nowrap')
+    tr1 << th('序号', nowrap='nowrap') + th('实例ID',nowrap='nowrap') + th('实例名称', nowrap='nowrap') + th('CPU', nowrap='nowrap') + th('QPS', nowrap='nowrap') + th('IOPS', nowrap='nowrap') + th('连接数', nowrap='nowrap') + th('磁盘使用率',nowrap='nowrap') + th('主备延迟', nowrap='nowrap') + th('活跃线程', nowrap='nowrap') + th('流量(KB)',nowrap='nowrap')
     return page, mytab
     
 
@@ -55,7 +61,7 @@ if __name__ == '__main__':
 		'msg':'数据库中的ID',
 	    }
 	],
-	['rds3h85eqq2akpl306hz',
+	['rds3h85eqq2akpl706hz',
 	    {
 		'id':'v_rid_9999',
 		'width':'50px',
@@ -145,7 +151,7 @@ if __name__ == '__main__':
 		    'msg':'数据库中的ID',
 	    }
 	],
-	['dhd3h85eqq2akpl306hz',
+	['dhd3h85eqq2akpl806hz',
 	    {
 		'id':'v_rid_9999',
 		'style':'',
@@ -217,7 +223,6 @@ if __name__ == '__main__':
 	],
     ]
 
-    #
     #for tr_n in range(int(num)):
     #    tr_n = 'tr_' + str(tr_n)
     #    add_td(tr_n, mytab, v_dict)
@@ -232,3 +237,5 @@ if __name__ == '__main__':
             n_dict = dict_lst[n][index]
             mytr << td(n_dict[0], id=n_dict[1]['id'], style=n_dict[1]['style'], nowrap='')
     page.printOut()
+
+
