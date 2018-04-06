@@ -31,3 +31,10 @@ http://code.google.com/p/pyh
 - 添加了两个函数，从文件导入css,js代码段
 - 修改了一些bug，以便能在python3中使用
 - 修改并添加了一些tag
+
+=======================================
+# 生成列表示例：
+`python examples/create_table_by_func.py 2 > a.html`
+
+如图：
+![Alt text](https://github.com/master-dhd/pyh/blob/master/img/001.png "table example")
