@@ -1,5 +1,6 @@
 #!/usr/bin/python
-#coding:utf-8
+# coding:utf-8
+# 基于列表生成2*11的表格示例代码
 
 import sys
 reload(sys) 
